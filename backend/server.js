@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose';
 import signupRoute from './routes/signup/signup.js'
+import loginRoute from './routes/login/login.js'
 
 dotenv.config();
 
@@ -11,6 +12,8 @@ const PORT = 3000;
 app.use(express.json());
 
 app.use("/api/signup", signupRoute);
+
+app.use("/api/login", loginRoute);
 
 app.get('/', (req, res) => {
     res.send("This is a test message to check the server")
