@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose';
 import signupRoute from './routes/signup/signup.js'
 import loginRoute from './routes/login/login.js'
+import postRoute from './routes/posts/posts.js'
 
 dotenv.config();
 
@@ -14,6 +15,8 @@ app.use(express.json());
 app.use("/api/signup", signupRoute);
 
 app.use("/api/login", loginRoute);
+
+app.use("/api/post", postRoute)
 
 app.get('/', (req, res) => {
     res.send("This is a test message to check the server")
