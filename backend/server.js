@@ -1,13 +1,18 @@
 import express from 'express'
+import cors from 'cors'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose';
 import signupRoute from './routes/signup/signup.js'
 import loginRoute from './routes/login/login.js'
 import postRoute from './routes/posts/posts.js'
 
+
 dotenv.config();
 
 const app = express();
+
+app.use(cors());
+
 const PORT = 3000;
 
 app.use(express.json());

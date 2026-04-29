@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Login.css'; 
 
 const Login = () => {
@@ -8,9 +9,14 @@ const Login = () => {
     password: ''
   })
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = async (e) =>{
     e.preventDefault();
-    console.log("Login form Submitted");
+    try {
+      const response = await axios.post('http://localhost:3000/api/login', formData)
+      console.log("Login form Submitted");
+    } catch (error) {
+      console.log("Error while logging in", error);
+    }
   }
 
   const handleChange = (e) =>{

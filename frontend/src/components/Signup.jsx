@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios'
+
 import './Signup.css';
 
 const Signup = () => {
@@ -17,10 +19,17 @@ const Signup = () => {
   });
  };
 
- const handleSubmit = (e) =>{
+ const handleSubmit = async (e) =>{
   e.preventDefault();
-  console.log('Sign-up form Submitted');
-  console.log(formData);
+  try {
+
+    const response = await axios.post('http://localhost:3000/api/signup', formData);
+    console.log('Sign-up form Submitted');
+    console.log(response.data);
+    
+  } catch (error) {
+    console.error('Error submitting form:', error);
+  }
  }
 
   return (
