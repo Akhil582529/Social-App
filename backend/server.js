@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import signupRoute from './routes/signup/signup.js'
 import loginRoute from './routes/login/login.js'
 import postRoute from './routes/posts/posts.js'
+import cookieParser from 'cookie-parser';
 
 
 dotenv.config();
@@ -12,6 +13,8 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
+
+app.use(cookieParser());
 
 const PORT = 3000;
 

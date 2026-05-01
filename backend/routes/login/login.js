@@ -35,14 +35,18 @@ router.post ('/', async (req, res)=>{
             {expiresIn : '1h'}
         );
         
+         res.cookie("token", token, {
+            httpOnly: true,
+            secure: false,
+            sameSite: "lax",
+            maxAge: 60 * 60 * 1000
+        });
 
         console.log('Token', token);
 
-        res.status(200).json({
+        return res.status(200).json({
             message: "User logged in successfully"
         });
-
-        return token;
     } catch (error) {
         res.status(400).json({
             message: error.message
